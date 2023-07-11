@@ -1,0 +1,61 @@
+.payments-container {
+  padding: 30px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.green-wrapper {
+  background-color: #3fa72f22;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.black-btn {
+  background-color: var(--yetty-black);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 250px;
+  height: 60px;
+  font-weight: 500;
+  font-size: 20px;
+  max-width: 100%;
+}
+
+.customer {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.yellow {
+  color: var(--yetty-yellow);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.green-btn {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--yetty-green);
+  color: #fff;
+  width: 30%;
+  min-width: max-content;
+}
+
+.yellow-btn {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--yetty-yellow);
+  color: #fff;
+  width: 30%;
+  min-width: max-content;
+}
+
+@media only screen and (max-width: 426px) {
+  .payments-container {
+    padding: 10px;
+  }
+}

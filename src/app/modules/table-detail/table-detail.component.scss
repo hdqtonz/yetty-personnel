@@ -1,0 +1,22 @@
+.route-btn {
+  width: 100%;
+  background-color: #d0ccc733;
+  border-radius: 50px;
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.route-btn:hover {
+  transform: scale(1.1);
+}
+
+.activeRoute {
+  background-color: var(--yetty-black);
+  color: #fff;
+}

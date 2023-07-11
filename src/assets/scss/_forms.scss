@@ -1,0 +1,17 @@
+.yetty-text-label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+.yetty-input {
+    background-color: var(--yetty-grey-bg);
+    border: none;
+    border-radius: 10px;
+    height: 60px;
+    outline: none;
+}
+
+.yetty-input:focus{
+    border: 2px solid var(--yetty-green) !important;
+}

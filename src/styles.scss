@@ -1,1 +1,113 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$yetty-personnel-primary: mat.define-palette(mat.$indigo-palette);
+$yetty-personnel-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$yetty-personnel-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$yetty-personnel-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $yetty-personnel-primary,
+      accent: $yetty-personnel-accent,
+      warn: $yetty-personnel-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($yetty-personnel-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* You can add global styles to this file, and also import other style files */
+@import "../src/assets/scss/chips";
+@import "../src/assets/scss//forms";
+
+:root {
+  --yetty-grey-bg: #a7a7a7;
+  --yetty-yellow: #ffba33;
+  --yetty-green: #3fa72f;
+  --yetty-black: #2f2f2f;
+}
+
+.yetty-text-label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  margin-bottom: 5px;
+}
+
+.yetty-input {
+  background-color: #a7a7a722;
+  border: none;
+  border-radius: 10px;
+  height: 60px;
+}
+
+.yellow-btn {
+  background-color: var(--yetty-yellow);
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.modal-header {
+  border: none !important;
+}
+
+.modal-footer {
+  border: none !important;
+}
+
+.page-heading {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.mat-mdc-checkbox-checked .mdc-checkbox__background {
+  border-color: var(--yetty-green) !important;
+  background-color: var(--yetty-green) !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+}

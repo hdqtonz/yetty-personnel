@@ -1,0 +1,233 @@
+<div class="orders-container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+      <div class="green-wrapper">
+        <div class="text-center">
+          <button class="order-btn mt-3 mb-4">New Order</button>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <mat-checkbox color="primary"
+                ><span class="check-item">Spaghetti</span></mat-checkbox
+              >
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2</div>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <mat-checkbox color="primary"
+                ><span class="check-item">Spaghetti</span></mat-checkbox
+              >
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2</div>
+        </div>
+
+        <div class="text-center">
+          <button class="green-btn mb-4">Confirm Selected</button>
+        </div>
+        <div class="text-center">
+          <button class="green-btn">Decline Selected</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+      <div class="green-wrapper">
+        <div class="text-center">
+          <button class="order-btn mt-3 mb-4">Confirmed Order</button>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <img src="/assets/images/icons/circle.svg" alt="" />
+              <span style="margin-left: 20px">Spaghetti</span>
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2 <span>(Not Paid)</span></div>
+          <div
+            class="order-action-btns d-flex justify-content-between mt-4 mb-4"
+          >
+            <button class="order-action green-bg">Pay</button>
+            <button class="order-action">Served</button>
+            <button class="order-action">Decline</button>
+          </div>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <img src="/assets/images/icons/circle.svg" alt="" />
+              <span style="margin-left: 20px">Spaghetti</span>
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2 <span>(Not Paid)</span></div>
+
+          <div
+            class="order-action-btns d-flex justify-content-between mt-4 mb-4"
+          >
+            <button class="order-action green-bg">Pay</button>
+            <button class="order-action">Served</button>
+            <button class="order-action">Decline</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+      <div class="green-wrapper">
+        <div class="text-center">
+          <button class="order-btn mt-3 mb-4">Served Order</button>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <img src="/assets/images/icons/circle.svg" alt="" />
+              <span style="margin-left: 20px">Spaghetti</span>
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2 <span>(Not Paid)</span></div>
+          <div
+            class="order-action-btns d-flex justify-content-evenly mt-4 mb-4"
+          >
+            <button class="order-action green-bg">Pay</button>
+            <button class="order-action">Confirm</button>
+          </div>
+        </div>
+
+        <div class="dish-list mb-4">
+          <div class="dish-name d-flex justify-content-between">
+            <div>
+              <img src="/assets/images/icons/circle.svg" alt="" />
+              <span style="margin-left: 20px">Spaghetti</span>
+            </div>
+            <div class="dish-size">L</div>
+          </div>
+          <div class="customer">Customer Name : <span>Mike</span></div>
+          <div class="dish-price">$21.2 <span>(Not Paid)</span></div>
+
+          <div
+            class="order-action-btns d-flex justify-content-evenly mt-4 mb-4"
+          >
+            <button class="order-action green-bg">Pay</button>
+            <button class="order-action">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mt-5">
+    <button
+      class="green-btn"
+      style="width: 20%; min-width: max-content"
+      routerLink="/tables"
+    >
+      Back To Tables
+    </button>
+    <button
+      class="green-btn"
+      style="width: 20%; min-width: max-content"
+      data-bs-toggle="modal"
+      data-bs-target="#addOrderItem"
+    >
+      Add Order Items
+    </button>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="addOrderItem"
+  tabindex="-1"
+  aria-labelledby="addOrderItemModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addOrderItemModal">
+          Add an additional order item to a visitor's order:
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="d-flex flex-column mt-4 w-50 modal-field-container">
+            <input
+              type="text"
+              class="form-control"
+              style="height: 50px"
+              value="Fajita Pizza Deep dish"
+            />
+          </div>
+          <div class="mt-4 mb-4" style="font-weight: 500; font-size: 18px">
+            Price:
+          </div>
+          <div
+            class="d-flex justify-content-between mt-4 modal-field-container"
+          >
+            <div class="w-100">
+              <select class="form-select" style="height: 50px; max-width: 85%">
+                <option value="1">BNG</option>
+              </select>
+            </div>
+            <div class="w-100">
+              <input
+                type="text"
+                class="form-control"
+                style="height: 50px; max-width: 85%"
+                value="11,72"
+              />
+            </div>
+          </div>
+          <div class="mt-4 mb-4" style="font-weight: 500; font-size: 18px">
+            Customer:
+          </div>
+          <div
+            class="d-flex justify-content-between mt-4 w-50 modal-field-container"
+          >
+            <div>
+              <select class="form-select" style="height: 50px; width: 200px">
+                <option value="1">Customer 2</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <button type="button" mat-raised-button class="modal-green-btn">
+          Add
+        </button>
+        <button
+          type="button"
+          mat-raised-button
+          class="modal-yellow-btn"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

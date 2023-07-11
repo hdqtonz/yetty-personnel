@@ -1,0 +1,44 @@
+<div class="text-center mt-5 mb-5" style="font-size: 30px; font-weight: 600">
+  Floor 1 / Table 1
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3">
+      <div class="route-btn" routerLink="orders" routerLinkActive="activeRoute">
+        Orders
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3">
+      <div
+        class="route-btn"
+        routerLink="payments"
+        routerLinkActive="activeRoute"
+      >
+        Payments
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3">
+      <div
+        class="route-btn"
+        routerLink="visitors"
+        routerLinkActive="activeRoute"
+      >
+        Visitors
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3">
+      <div
+        class="route-btn"
+        routerLink="settings"
+        routerLinkActive="activeRoute"
+      >
+        Settings
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <router-outlet></router-outlet>
+</div>

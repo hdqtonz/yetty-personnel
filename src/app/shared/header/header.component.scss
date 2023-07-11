@@ -1,0 +1,107 @@
+.mail-bar {
+  height: 62px;
+  background-color: var(--yetty-green);
+  color: #fff;
+}
+
+.restaurant-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.notification {
+  cursor: pointer;
+}
+
+.notification-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: none;
+}
+
+.notification-container {
+  z-index: 5;
+  position: absolute;
+  background-color: #fff;
+  right: 0;
+  width: 500px;
+  padding: 20px;
+  max-width: 100%;
+  top: 60%;
+  padding-bottom: 0;
+  transition: transform 0.3s;
+  transform: scale(0);
+}
+
+.sound {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid gainsboro;
+}
+
+.notification-list {
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.notification {
+  background-color: #ededed;
+  padding: 15px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.time {
+  color: #727272;
+}
+
+.yellow {
+  color: var(--yetty-yellow);
+  cursor: pointer;
+}
+
+.notification-time {
+  position: absolute;
+  right: 20px;
+  top: 20%;
+  font-size: 14px;
+  color: #464646;
+}
+
+.notification-detail {
+  margin-left: 15px;
+}
+
+.green-btn {
+  background-color: var(--yetty-green);
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 100px;
+  color: #fff;
+}
+
+@media screen and (max-width: 426px) {
+  .restaurant-name {
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: normal;
+  }
+}

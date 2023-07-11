@@ -1,0 +1,146 @@
+<ng-container *ngIf="isUserLoggedIn">
+  <div class="mail-bar">
+    <div class="container h-100">
+      <div class="mail-address h-100 d-flex align-items-center">
+        mail.yetty-administorator.com
+      </div>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="container" style="position: relative">
+      <div class="header-container d-flex justify-content-between">
+        <div class="logo-container">
+          <img
+            style="width: 180px; max-width: 100%"
+            src="/assets/images/yetty-logo.png"
+            alt="Yetty logo"
+          />
+        </div>
+        <div class="user-info-container">
+          <div class="user-info d-flex align-items-center">
+            <div
+              class="d-flex align-items-center"
+              [matMenuTriggerFor]="menu"
+              style="cursor: pointer"
+            >
+              <div class="name text-end">
+                <div>Hello!</div>
+                <div>Mehar Usama</div>
+              </div>
+              <div class="dp">
+                <img src="/assets/images/avatar.png" alt="Avatar" />
+              </div>
+              <mat-menu
+                #menu="matMenu"
+                xPosition="after"
+                yPosition="below"
+                overlapTrigger="false"
+                menuAlign="start"
+              >
+                <button mat-menu-item routerLink="/account">
+                  <mat-icon>person</mat-icon>
+                  <span>My Profile</span>
+                </button>
+                <button mat-menu-item routerLink="/change-password">
+                  <mat-icon>key</mat-icon>
+                  <span>Change Password</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>logout</mat-icon>
+                  <span>Log Out</span>
+                </button>
+              </mat-menu>
+            </div>
+            <div
+              class="notification"
+              (click)="
+                notificationContainer.style.transform = 'scale(1)';
+                notificationOverlay.style.display = 'block'
+              "
+            >
+              <img
+                src="/assets/images/icons/notification.svg"
+                alt="Notification"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="notification-container" #notificationContainer>
+        <div class="d-flex justify-content-between">
+          <div style="font-size: 18px; font-weight: 500">Service Requests</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="notification-list">
+          <div class="notification mt-4">
+            <div class="d-flex align-items-center">
+              <div class="notification-detail">
+                <div>Floor 1 / table 2</div>
+                <div>Mike</div>
+              </div>
+            </div>
+            <div class="notification-time">
+              <button class="green-btn">Complete</button>
+            </div>
+          </div>
+          <div class="notification mt-4">
+            <div class="d-flex align-items-center">
+              <div class="notification-detail">
+                <div>Floor 1 / table 2</div>
+                <div>Mike</div>
+              </div>
+            </div>
+            <div class="notification-time">
+              <button class="green-btn">Complete</button>
+            </div>
+          </div>
+          <div class="notification mt-4">
+            <div class="d-flex align-items-center">
+              <div class="notification-detail">
+                <div>Floor 1 / table 2</div>
+                <div>Mike</div>
+              </div>
+            </div>
+            <div class="notification-time">
+              <button class="green-btn">Complete</button>
+            </div>
+          </div>
+          <div class="notification mt-4">
+            <div class="d-flex align-items-center">
+              <div class="notification-detail">
+                <div>Floor 1 / table 2</div>
+                <div>Mike</div>
+              </div>
+            </div>
+            <div class="notification-time">
+              <button class="green-btn">Complete</button>
+            </div>
+          </div>
+        </div>
+        <div class="sound"><mat-icon>volume_up</mat-icon></div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="notification-overlay"
+    #notificationOverlay
+    (click)="
+      notificationContainer.style.transform = 'scale(0)';
+      notificationOverlay.style.display = 'none'
+    "
+  ></div>
+  <div
+    class="container-fluid"
+    style="
+      background: url(/assets/images/restaurant-img.png);
+      min-height: 400px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    "
+  >
+    <div class="restaurant-name">CRAZY POTATO</div>
+  </div>
+</ng-container>

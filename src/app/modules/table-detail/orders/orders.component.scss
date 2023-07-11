@@ -1,0 +1,127 @@
+.green-btn {
+  background-color: var(--yetty-green);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 160px;
+  height: 50px;
+  font-weight: 500;
+  width: 70%;
+}
+
+.order-btn {
+  background-color: var(--yetty-black);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 190px;
+  height: 60px;
+  width: 70%;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.green-wrapper {
+  background-color: #3fa72f22;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.orders-container {
+  padding: 30px;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+
+.dish-size {
+  background: var(--yetty-yellow);
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dish-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--yetty-black);
+}
+
+.customer {
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.customer-name {
+  color: var(--yetty-yellow);
+}
+
+.dish-price {
+  color: var(--yetty-yellow);
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.order-action {
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+  width: 30%;
+  background-color: var(--yetty-yellow);
+}
+
+.green-bg {
+  background-color: var(--yetty-green);
+}
+
+.form-control,
+.form-select {
+  background-color: #d0ccc722;
+}
+
+.modal-green-btn {
+  width: 150px;
+  height: 50px;
+  background-color: var(--yetty-green) !important;
+  color: #fff !important;
+}
+
+.modal-yellow-btn {
+  width: 150px;
+  height: 50px;
+  background-color: var(--yetty-yellow) !important;
+  color: #fff !important;
+}
+
+.modal-field-container {
+  max-width: 430px;
+}
+
+.check-item {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 992px) {
+  .modal-field-container {
+    width: 80% !important;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .orders-container {
+    padding: 10px;
+  }
+
+  .modal-field-container {
+    width: 100% !important;
+  }
+}
