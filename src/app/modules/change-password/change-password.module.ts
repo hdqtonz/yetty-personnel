@@ -6,6 +6,7 @@ import { ChangePasswordComponent } from './change-password.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ChangePasswordComponent],
@@ -14,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
     ChangePasswordRoutingModule,
     SharedModule,
     MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ChangePasswordModule {}

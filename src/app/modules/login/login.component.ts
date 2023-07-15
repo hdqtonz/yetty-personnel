@@ -1,55 +1,89 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthenticationDetails, CognitoUser, CognitoUserPool } from 'amazon-cognito-identity-js';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  AuthenticationDetails,
+  CognitoUser,
+  CognitoUserPool,
+} from 'amazon-cognito-identity-js';
 import { environment } from '../../../environments/environment';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  isLoading: boolean = false;
-  email_address: string = "";
-  password: string = "";
+  loginForm: FormGroup;
+  returnUrl: string;
 
-  constructor(private router: Router) { }
+  constructor(
+    private _router: Router,
+    private _fb: FormBuilder,
+    private _authService: AuthService,
+    private _route: ActivatedRoute
+  ) {
+    this._authService.getSessionValidity().subscribe((res) => {
+      if (res) {
+        this._router.navigate(['tables']);
+      }
+    });
 
-  ngOnInit(): void { }
+    this._route.queryParamMap.subscribe((res: any) => {
+      console.log('res', res.params.returnUrl);
+      this.returnUrl = res.params.returnUrl;
+    });
+  }
 
-  onSignIn(form: NgForm) {
-    if (!form.valid) {
-      console.log(form, 'form');
-      this.isLoading = true;
-      let authenticationDetails = new AuthenticationDetails({
-        Username: this.email_address,
-        Password: this.password,
-      });
-      let poolData = {
-        UserPoolId: environment.cognitoUserPoolId, // Your user pool id here
-        ClientId: environment.cognitoAppClientId // Your client id here
-      };
+  ngOnInit(): void {
+    this.initializeLoginForm();
+  }
 
-      let userPool = new CognitoUserPool(poolData);
-      let userData = { Username: this.email_address, Pool: userPool };
-      var cognitoUser = new CognitoUser(userData);
+  initializeLoginForm() {
+    this.loginForm = this._fb.group({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
 
-      console.log(authenticationDetails);
-      console.log(poolData);
-      console.log(cognitoUser);
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid); // true or false
 
-      cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: (result) => {
-          console.log(result);
-          this.router.navigate(["tables"])
-        },
-        onFailure: (err) => {
-          alert(err.message || JSON.stringify(err));
-          this.isLoading = false;
-        },
-      });
-    }
-    console.log(form, 'out form');
+    let usrename = form.value.username;
+    let password = form.value.password;
+    this._authService.authenticate(usrename, password).subscribe({
+      next: (res) => {
+        console.log(res, 'authenticate');
+        this.getCurrentUser();
+      },
+      error: () => {},
+      complete: () => {},
+    });
+  }
+
+  getCurrentUser() {
+    this._authService.getCurrentUser().subscribe({
+      next: (res) => {
+        if (this.returnUrl) {
+          this.navigetTo(this.returnUrl);
+        } else {
+          this._router.navigate(['tables']);
+        }
+        console.log(res, 'getCurrentUser');
+      },
+      error: () => {},
+      complete: () => {},
+    });
+  }
+
+  navigetTo(path: string) {
+    this._router.navigate([path]);
   }
 }

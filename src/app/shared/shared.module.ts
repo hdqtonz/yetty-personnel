@@ -7,11 +7,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent],
   imports: [
     CommonModule,
+    RouterModule,
     MatMenuModule,
     MatIconModule,
     MatDividerModule,

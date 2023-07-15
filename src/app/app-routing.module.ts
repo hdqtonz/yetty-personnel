@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
+import { AuthService } from './core/services/auth.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tables',
+    redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('src/app/modules/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: '',
@@ -18,6 +25,7 @@ const routes: Routes = [
           import('src/app/modules/tables/tables.module').then(
             (m) => m.TablesModule
           ),
+        canActivate: [AuthGuard],
       },
 
       {
@@ -26,6 +34,7 @@ const routes: Routes = [
           import('src/app/modules/table-detail/table-detail.module').then(
             (m) => m.TableDetailModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'account',
@@ -33,6 +42,7 @@ const routes: Routes = [
           import('src/app/modules/account/account.module').then(
             (m) => m.AccountModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'change-password',
@@ -40,35 +50,16 @@ const routes: Routes = [
           import('src/app/modules/change-password/change-password.module').then(
             (m) => m.ChangePasswordModule
           ),
+        canActivate: [AuthGuard],
       },
     ],
   },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('src/app/modules/login/login.module').then((m) => m.LoginModule),
-  },
-
-  // {
-  //   path:'tables',
-  //   loadChildren:()=>import('../app/pages/tables/tables.module').then(m=>m.TablesModule)
-  // },
-  // {
-  //   path:'table-detail',
-  //   loadChildren:()=>import('../app/pages/table-detail/table-detail.module').then(m=>m.TableDetailModule)
-  // },
-  // {
-  //   path:'account',
-  //   loadChildren:()=>import('../app/pages/account/account.module').then(m=>m.AccountModule)
-  // },
-  // {
-  //   path:'change-password',
-  //   loadChildren:()=>import('../app/pages/change-password/change-password.module').then(m=>m.ChangePasswordModule)
-  // }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthService],
 })
 export class AppRoutingModule {}
