@@ -10,4 +10,5 @@ export class LocalStorage {
   static LatLong: string = 'lat-long';
   static MenuDetail: string = 'menuDetail';
   static AccessToken: string = 'accessToken';
+  static User = 'user';
 }

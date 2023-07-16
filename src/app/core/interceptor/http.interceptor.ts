@@ -13,7 +13,7 @@ import { LocalStorage } from '../class/local-storage';
 
 @Injectable()
 export class HttpInterceptors implements HttpInterceptor {
-  constructor(private _localStorageService: LocalStorageService,) { }
+  constructor(private _localStorageService: LocalStorageService) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -21,7 +21,6 @@ export class HttpInterceptors implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const reqCopy = request.clone({
       headers: request.headers
-        .set('Authorization', 'Bearer ' + this._localStorageService.getItem(LocalStorage.AccessToken))
         .set('Content-Type', 'application/json')
         .set('x-api-key', environment.ApiKey),
 

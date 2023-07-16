@@ -20,6 +20,8 @@ import { AppLocalizationInitializationService } from './core/initialization/loca
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { HttpClientService } from './core/services/http-client.service';
+import { RouteConfig } from './core/config/route.config';
+import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent],
@@ -40,9 +42,15 @@ import { HttpClientService } from './core/services/http-client.service';
     MatDialogModule,
   ],
   providers: [
+    RouteConfig,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptors,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true,
     },
     {

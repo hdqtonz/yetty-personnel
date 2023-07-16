@@ -2,41 +2,58 @@
 
 <div class="container mb-5">
   <div class="account-container">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
-        <div class="d-flex flex-column">
-          <label for="firstName" class="yetty-text-label">First Name</label>
-          <input
-            type="firstName"
-            name="firstName"
-            id="firstName"
-            class="yetty-input"
-          />
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit(accountForm)">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+          <div class="d-flex flex-column">
+            <label for="firstName" class="yetty-text-label">First Name</label>
+            <input
+              type="firstName"
+              name="firstName"
+              formControlName="firstName"
+              id="firstName"
+              class="yetty-input"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
-        <div class="d-flex flex-column">
-          <label for="lastname" class="yetty-text-label">Last Name</label>
-          <input
-            type="lastname"
-            name="lastname"
-            id="lastname"
-            class="yetty-input"
-          />
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+          <div class="d-flex flex-column">
+            <label for="lastname" class="yetty-text-label">Last Name</label>
+            <input
+              type="lastname"
+              name="lastname"
+              formControlName="lastName"
+              id="lastname"
+              class="yetty-input"
+            />
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
+          <div class="d-flex flex-column">
+            <label for="email" class="yetty-text-label">Email</label>
+            <input
+              type="email"
+              formControlName="email"
+              name="email"
+              id="email"
+              class="yetty-input"
+            />
+          </div>
         </div>
       </div>
-      <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
-        <div class="d-flex flex-column">
-          <label for="email" class="yetty-text-label">Email</label>
-          <input type="email" name="email" id="email" class="yetty-input" />
+      <div class="picture-change mt-5 mb-5">
+        <div>
+          <button
+            [disabled]="accountForm.invalid"
+            mat-raised-button
+            class="green-btn"
+          >
+            Save
+          </button>
         </div>
       </div>
-    </div>
-    <div class="picture-change mt-5 mb-5">
-      <div>
-        <button mat-raised-button class="green-btn">Save</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

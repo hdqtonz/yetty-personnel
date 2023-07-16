@@ -6,9 +6,16 @@ import { AccountComponent } from './account.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AccountComponent],
-  imports: [CommonModule, AccountRoutingModule, SharedModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    AccountRoutingModule,
+    SharedModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+  ],
 })
 export class AccountModule {}

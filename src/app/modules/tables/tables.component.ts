@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BaseComponent } from 'src/app/core/class/base-component';
+import { AccountService } from 'src/app/core/services/account.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./tables.component.scss'],
 })
 export class TablesComponent extends BaseComponent implements OnInit {
-  constructor(private _matSnackkBar: MatSnackBar, private _authService:AuthService) {
+  constructor(
+    private _matSnackkBar: MatSnackBar,
+    private _accountService: AccountService
+  ) {
     super(_matSnackkBar);
 
-    let user = this._authService.accountValue
-    console.log(user, 'user')
+    let user = this._accountService.accountValue;
+    console.log(user);
   }
 
   ngOnInit(): void {}

@@ -10,24 +10,18 @@ import {
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable, Observer, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public accountSubject: BehaviorSubject<any>;
-  public account: Observable<any>;
-
   user: CognitoUser;
 
-  constructor(private _router: Router) {
-    this.accountSubject = new BehaviorSubject<any>(null);
-    this.account = this.accountSubject.asObservable();
-  }
-
-  public get accountValue(): CognitoUser {
-    return this.accountSubject.value;
-  }
+  constructor(
+    private _router: Router,
+    private _accountService: AccountService
+  ) {}
 
   poolData = {
     UserPoolId: environment.cognitoUserPoolId,
@@ -103,23 +97,6 @@ export class AuthService {
     }
   }
 
-  getSession(): Observable<CognitoUserSession | null> {
-    const user: CognitoUser = this.getUserPool().getCurrentUser();
-
-    if (user) {
-      return Observable.create((observer: Observer<any>) => {
-        user.getSession((err, session) => {
-          if (err) {
-            return observer.error(err);
-          }
-          observer.next(session);
-        });
-      });
-    } else {
-      return throwError(null);
-    }
-  }
-
   getAccessToken(): Observable<CognitoAccessToken> {
     const user: CognitoUser = this.getUserPool().getCurrentUser();
 
@@ -137,30 +114,33 @@ export class AuthService {
     }
   }
 
-  getIdToken(): Observable<CognitoIdToken> {
-    const user: CognitoUser = this.getUserPool().getCurrentUser();
-
-    if (user) {
-      return Observable.create((observer: Observer<any>) => {
-        user.getSession((err, session: CognitoUserSession) => {
-          if (err) {
-            return observer.error(err);
-          }
-          observer.next(session.getIdToken());
-        });
-      });
-    } else {
-      return throwError(null);
-    }
-  }
-
   signOut(): void {
     const user: CognitoUser = this.getUserPool().getCurrentUser();
     if (user != null) {
       user.signOut();
       localStorage.clear();
-      this.accountSubject.next(null);
+      this._accountService.accountSubject.next(null);
       this._router.navigate(['login']);
     }
+  }
+
+  /*
+    TODO:
+    Error: User is not authenticated
+    https://github.com/amazon-archives/amazon-cognito-identity-js/issues/71
+  */
+  changePassword(oldPassword: string, newPassword: string): Observable<any> {
+    return Observable.create((observer: Observer<any>) => {
+      this.user.changePassword(
+        'Testing12345!',
+        'Testing1234!',
+        (err, result) => {
+          if (err) {
+            return observer.error(err);
+          }
+          observer.next(result);
+        }
+      );
+    });
   }
 }

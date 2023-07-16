@@ -17,6 +17,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { BaseComponent } from 'src/app/core/class/base-component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { AccountService } from 'src/app/core/services/account.service';
+import { Profile } from 'src/app/core/interface/Profile';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +36,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthService,
     private _route: ActivatedRoute,
-    private _localStorageService: LocalStorageService
+    private _localStorageService: LocalStorageService,
+    private _accountService: AccountService
   ) {
     super(_matSnackBar);
     this._authService.getSessionValidity().subscribe((res) => {
@@ -78,7 +81,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this._authService.authenticate(usrename, password).subscribe({
       next: (res) => {
         console.log(res, 'authenticate');
-        this.getCurrentUser();
+        if (res) {
+          setTimeout(() => {
+            this.getCurrentUser();
+          }, 500);
+        }
       },
       error: (err) => {
         this.showError(err.message);
@@ -90,19 +97,18 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   getCurrentUser() {
-    this._authService.getCurrentUser().subscribe({
-      next: (res) => {
+    this._accountService.getLoggedInUserProfile().subscribe({
+      next: (res: Profile) => {
         if (this.returnUrl) {
           this.navigetTo(this.returnUrl);
         } else {
           this._router.navigate(['tables']);
         }
-        this._authService.accountSubject.next(res);
         this.showMessage('Logged in successfully');
-        console.log(res, 'getCurrentUser');
       },
       error: (err) => {
         this.showError(err.message);
+        this._authService.signOut();
         this.isLoading = false;
       },
       complete: () => {

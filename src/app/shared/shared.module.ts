@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent],
@@ -19,6 +20,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatIconModule,
     MatDividerModule,
     TranslateModule,
+    FormsModule,
     MatSnackBarModule,
   ],
   exports: [HeaderComponent, FooterComponent],
