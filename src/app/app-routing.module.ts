@@ -16,6 +16,11 @@ const routes: Routes = [
       import('src/app/modules/login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: ':id/login',
+    loadChildren: () =>
+      import('src/app/modules/login/login.module').then((m) => m.LoginModule),
+  },
+  {
     path: '',
     component: MainLayoutComponent,
     children: [
@@ -27,7 +32,6 @@ const routes: Routes = [
           ),
         canActivate: [AuthGuard],
       },
-
       {
         path: 'table-detail',
         loadChildren: () =>

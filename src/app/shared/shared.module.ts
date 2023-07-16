@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent],
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatDividerModule,
     TranslateModule,
+    MatSnackBarModule,
   ],
   exports: [HeaderComponent, FooterComponent],
 })

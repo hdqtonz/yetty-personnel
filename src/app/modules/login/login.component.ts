@@ -14,31 +14,48 @@ import {
 } from 'amazon-cognito-identity-js';
 import { environment } from '../../../environments/environment';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { BaseComponent } from 'src/app/core/class/base-component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  returnUrl: string;
+export class LoginComponent extends BaseComponent implements OnInit {
+  public loginForm: FormGroup;
+  public returnUrl: string;
+  public establishmentId: string;
 
   constructor(
+    private _matSnackBar: MatSnackBar,
     private _router: Router,
     private _fb: FormBuilder,
     private _authService: AuthService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _localStorageService: LocalStorageService
   ) {
+    super(_matSnackBar);
     this._authService.getSessionValidity().subscribe((res) => {
       if (res) {
         this._router.navigate(['tables']);
       }
     });
 
+    // Getting redirect path
     this._route.queryParamMap.subscribe((res: any) => {
       console.log('res', res.params.returnUrl);
       this.returnUrl = res.params.returnUrl;
+    });
+
+    // Getting establishment id from path
+    this._route.paramMap.subscribe((res: any) => {
+      this.establishmentId = res.params.id;
+      this._localStorageService.setItem(
+        'establishmentId',
+        this.establishmentId
+      );
     });
   }
 
@@ -63,8 +80,12 @@ export class LoginComponent implements OnInit {
         console.log(res, 'authenticate');
         this.getCurrentUser();
       },
-      error: () => {},
-      complete: () => {},
+      error: (err) => {
+        this.showError(err.message);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
     });
   }
 
@@ -76,10 +97,17 @@ export class LoginComponent implements OnInit {
         } else {
           this._router.navigate(['tables']);
         }
+        this._authService.accountSubject.next(res);
+        this.showMessage('Logged in successfully');
         console.log(res, 'getCurrentUser');
       },
-      error: () => {},
-      complete: () => {},
+      error: (err) => {
+        this.showError(err.message);
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
     });
   }
 

@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  private accountSubject: BehaviorSubject<any>;
+  public accountSubject: BehaviorSubject<any>;
   public account: Observable<any>;
 
   user: CognitoUser;
@@ -79,27 +79,10 @@ export class AuthService {
   }
 
   /*
-    TODO:
-    Error: User is not authenticated
-    https://github.com/amazon-archives/amazon-cognito-identity-js/issues/71
-  */
-  changePassword(oldPassword: string, newPassword: string): Observable<any> {
-    return Observable.create((observer: Observer<any>) => {
-      this.user.changePassword(oldPassword, newPassword, (err, result) => {
-        if (err) {
-          return observer.error(err);
-        }
-        observer.next(result);
-      });
-    });
-  }
-
-  /*
     getCurrentUser returns a Cognito user object if user is signed in
     or null-value if there is no current user
   */
   getCurrentUser(): Observable<CognitoUser | null> {
-    this.accountSubject.next(this.getUserPool().getCurrentUser());
     return of(this.getUserPool().getCurrentUser());
   }
 

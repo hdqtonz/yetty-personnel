@@ -59,6 +59,8 @@ body {
   --yetty-yellow: #ffba33;
   --yetty-green: #3fa72f;
   --yetty-black: #2f2f2f;
+  --yetty-text-white: #e3e2e0;
+  --yetty-red: #f02e22;
 }
 
 .yetty-text-label {
@@ -110,4 +112,22 @@ body {
 body {
   margin: 0;
   font-family: "Poppins", "Helvetica Neue", sans-serif;
+}
+
+.red-snackbar {
+  background: var(--yetty-red);
+  --mdc-snackbar-container-color: var(--yetty-red);
+  color: var(--yetty-text-white);
+  opacity: 0.7;
+}
+
+.green-snackbar {
+  background: var(--yetty-green);
+  color: var(--yetty-text-white);
+  --mdc-snackbar-container-color: var(--yetty-green);
+  opacity: 0.7;
+}
+
+.mat-mdc-snack-bar-actions .mdc-button__label {
+  color: var(--yetty-text-white);
 }
