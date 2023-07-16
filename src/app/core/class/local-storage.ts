@@ -6,7 +6,8 @@ export class LocalStorage {
   static RestrictAccessByLocation: string = 'restrictAccessByLocation';
   static ESTABLISHMENT_ID: string = 'establishmentId';
   static TABLE_ID: string = 'tableId';
-//   static VISITOR_ID: string = 'visitorId';
+  //static VISITOR_ID: string = 'visitorId';
   static LatLong: string = 'lat-long';
   static MenuDetail: string = 'menuDetail';
+  static AccessToken: string = 'accessToken';
 }
