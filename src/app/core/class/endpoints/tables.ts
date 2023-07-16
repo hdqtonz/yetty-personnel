@@ -1,4 +1,4 @@
-export class establishmentAPIEndpoints {
+export class tableAPIEndpoints {
 
   /**
    * tags: Tables
